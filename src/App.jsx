@@ -1,24 +1,37 @@
+import { useState } from "react"
+import MemberPage from "./pages/MemberPage"
+
 export default function App() {
+  const [activePage, setActivePage] = useState("dashboard")
+
   const shortcutMenus = [
     {
       title: 'Daftar Anggota',
       description: 'Kelola data member dan pantau aktivitas mereka.',
       icon: '👥',
       color: 'from-violet-500 to-fuchsia-500',
+      page: 'member',
     },
     {
       title: 'Proof CO',
       description: 'Upload bukti checkout pembelian barang.',
       icon: '🛍️',
       color: 'from-pink-500 to-rose-500',
+      page: 'proofco',
     },
     {
       title: 'Rekapan Jajan',
       description: 'Lihat semua rekapan belanja member.',
       icon: '📋',
       color: 'from-indigo-500 to-blue-500',
+      page: 'rekapan',
     },
   ]
+
+  // OPEN MEMBER PAGE
+  if (activePage === "member") {
+    return <MemberPage />
+  }
 
   return (
     <div className="min-h-screen bg-[#f7f5ff] p-8">
@@ -127,6 +140,7 @@ export default function App() {
               </p>
 
               <button
+                onClick={() => setActivePage(menu.page)}
                 className={`bg-gradient-to-r ${menu.color} text-white px-6 py-3 rounded-2xl font-semibold shadow-lg hover:scale-105 transition`}
               >
                 Open Menu →
