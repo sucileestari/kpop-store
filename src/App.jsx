@@ -1,37 +1,32 @@
-import { useState } from "react"
+import { Routes, Route, useNavigate } from "react-router-dom"
 import MemberPage from "./pages/MemberPage"
 
-export default function App() {
-  const [activePage, setActivePage] = useState("dashboard")
+function Dashboard() {
+  const navigate = useNavigate()
 
   const shortcutMenus = [
     {
-      title: 'Daftar Anggota',
-      description: 'Kelola data member dan pantau aktivitas mereka.',
-      icon: '👥',
-      color: 'from-violet-500 to-fuchsia-500',
-      page: 'member',
+      title: "Daftar Anggota",
+      description: "Kelola data member dan pantau aktivitas mereka.",
+      icon: "👥",
+      color: "from-violet-500 to-fuchsia-500",
+      page: "/members",
     },
     {
-      title: 'Proof CO',
-      description: 'Upload bukti checkout pembelian barang.',
-      icon: '🛍️',
-      color: 'from-pink-500 to-rose-500',
-      page: 'proofco',
+      title: "Proof CO",
+      description: "Upload bukti checkout pembelian barang.",
+      icon: "🛍️",
+      color: "from-pink-500 to-rose-500",
+      page: "/proofco",
     },
     {
-      title: 'Rekapan Jajan',
-      description: 'Lihat semua rekapan belanja member.',
-      icon: '📋',
-      color: 'from-indigo-500 to-blue-500',
-      page: 'rekapan',
+      title: "Rekapan Jajan",
+      description: "Lihat semua rekapan belanja member.",
+      icon: "📋",
+      color: "from-indigo-500 to-blue-500",
+      page: "/rekapan",
     },
   ]
-
-  // OPEN MEMBER PAGE
-  if (activePage === "member") {
-    return <MemberPage />
-  }
 
   return (
     <div className="min-h-screen bg-[#f7f5ff] p-8">
@@ -43,38 +38,9 @@ export default function App() {
           <h1 className="text-4xl font-black text-violet-600">
             KPOP STORE 💜
           </h1>
-
           <p className="text-slate-500 text-lg mt-2">
             Dashboard Management System
           </p>
-        </div>
-
-        <div className="flex items-center gap-4">
-
-          <button className="w-14 h-14 bg-violet-100 rounded-2xl text-2xl">
-            🔔
-          </button>
-
-          <div className="bg-violet-50 px-5 py-3 rounded-2xl flex items-center gap-4 border border-violet-100">
-
-            <img
-              src="https://i.pravatar.cc/100?img=32"
-              alt="profile"
-              className="w-14 h-14 rounded-full"
-            />
-
-            <div>
-              <h3 className="font-bold text-lg">
-                Super Admin
-              </h3>
-
-              <p className="text-sm text-slate-500">
-                superadmin@kpop.com
-              </p>
-            </div>
-
-          </div>
-
         </div>
 
       </div>
@@ -104,14 +70,13 @@ export default function App() {
 
       </div>
 
-      {/* SHORTCUT MENU */}
+      {/* MENU */}
       <section>
 
         <div className="mb-8">
           <h2 className="text-3xl font-black text-slate-800 mb-2">
             Menu
           </h2>
-
           <p className="text-slate-500 text-lg">
             Akses cepat ke menu yang paling sering digunakan.
           </p>
@@ -140,7 +105,7 @@ export default function App() {
               </p>
 
               <button
-                onClick={() => setActivePage(menu.page)}
+                onClick={() => navigate(menu.page)}
                 className={`bg-gradient-to-r ${menu.color} text-white px-6 py-3 rounded-2xl font-semibold shadow-lg hover:scale-105 transition`}
               >
                 Open Menu →
@@ -154,5 +119,14 @@ export default function App() {
       </section>
 
     </div>
+  )
+}
+
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Dashboard />} />
+      <Route path="/members" element={<MemberPage />} />
+    </Routes>
   )
 }

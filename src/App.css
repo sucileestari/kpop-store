@@ -1,49 +1,74 @@
 .counter {
   font-size: 16px;
-  padding: 5px 10px;
-  border-radius: 5px;
+  padding: 6px 10px;
+  border-radius: 8px;
   color: var(--accent);
   background: var(--accent-bg);
   border: 2px solid transparent;
   transition: border-color 0.3s;
   margin-bottom: 24px;
+  display: inline-flex;
+  align-items: center;
 
   &:hover {
     border-color: var(--accent-border);
   }
+
   &:focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 2px;
   }
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
 }
 
+/* HERO */
 .hero {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  padding: 16px;
 
   .base,
   .framework,
   .vite {
     inset-inline: 0;
     margin: 0 auto;
+    max-width: 100%;
   }
 
   .base {
     width: 170px;
     position: relative;
     z-index: 0;
+
+    @media (max-width: 768px) {
+      width: 120px;
+    }
   }
 
   .framework,
   .vite {
     position: absolute;
+    max-width: 100%;
   }
 
   .framework {
     z-index: 1;
     top: 34px;
     height: 28px;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
-      scale(1.4);
+    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg)
+      rotateY(39deg) scale(1.4);
+
+    @media (max-width: 768px) {
+      top: 22px;
+      transform: scale(1.05);
+    }
   }
 
   .vite {
@@ -51,25 +76,39 @@
     top: 107px;
     height: 26px;
     width: auto;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
-      scale(0.8);
+    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg)
+      rotateY(39deg) scale(0.8);
+
+    @media (max-width: 768px) {
+      top: 85px;
+      transform: scale(0.7);
+    }
   }
 }
 
+/* CENTER */
 #center {
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 24px;
   place-content: center;
   place-items: center;
   flex-grow: 1;
+  text-align: center;
+  padding: 0 16px;
 
   @media (max-width: 1024px) {
-    padding: 32px 20px 24px;
+    padding: 24px 20px;
     gap: 18px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 20px 14px;
+    gap: 14px;
   }
 }
 
+/* NEXT STEPS */
 #next-steps {
   display: flex;
   border-top: 1px solid var(--border);
@@ -78,8 +117,13 @@
   & > div {
     flex: 1 1 0;
     padding: 32px;
+
     @media (max-width: 1024px) {
       padding: 24px 20px;
+    }
+
+    @media (max-width: 768px) {
+      padding: 18px 14px;
     }
   }
 
@@ -95,6 +139,7 @@
   }
 }
 
+/* DOCS SECTION */
 #docs {
   border-right: 1px solid var(--border);
 
@@ -104,12 +149,15 @@
   }
 }
 
+/* SOCIAL LINKS */
 #next-steps ul {
   list-style: none;
   padding: 0;
   display: flex;
   gap: 8px;
   margin: 32px 0 0;
+  flex-wrap: wrap;
+  justify-content: center;
 
   .logo {
     height: 18px;
@@ -117,50 +165,56 @@
 
   a {
     color: var(--text-h);
-    font-size: 16px;
-    border-radius: 6px;
+    font-size: 15px;
+    border-radius: 12px;
     background: var(--social-bg);
     display: flex;
-    padding: 6px 12px;
+    padding: 10px 12px;
     align-items: center;
     gap: 8px;
     text-decoration: none;
-    transition: box-shadow 0.3s;
+    transition: transform 0.2s, box-shadow 0.3s;
+    min-height: 42px;
 
     &:hover {
       box-shadow: var(--shadow);
+      transform: translateY(-2px);
     }
+
     .button-icon {
       height: 18px;
       width: 18px;
     }
+
+    @media (max-width: 768px) {
+      font-size: 14px;
+      width: 100%;
+      justify-content: center;
+    }
   }
 
-  @media (max-width: 1024px) {
-    margin-top: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-
+  @media (max-width: 768px) {
     li {
       flex: 1 1 calc(50% - 8px);
     }
-
-    a {
-      width: 100%;
-      justify-content: center;
-      box-sizing: border-box;
-    }
   }
 }
 
+/* SPACER */
 #spacer {
   height: 88px;
   border-top: 1px solid var(--border);
+
   @media (max-width: 1024px) {
     height: 48px;
   }
+
+  @media (max-width: 768px) {
+    height: 32px;
+  }
 }
 
+/* TICKS */
 .ticks {
   position: relative;
   width: 100%;
@@ -177,8 +231,16 @@
     left: 0;
     border-left-color: var(--border);
   }
+
   &::after {
     right: 0;
     border-right-color: var(--border);
+  }
+
+  @media (max-width: 768px) {
+    &::before,
+    &::after {
+      display: none;
+    }
   }
 }
