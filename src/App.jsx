@@ -83,10 +83,6 @@ export default function App() {
             Pantau member, upload proof checkout, dan kelola rekapan jajan dengan lebih mudah.
           </p>
 
-          <button className="bg-gradient-to-r from-violet-600 to-pink-500 text-white px-8 py-4 rounded-2xl font-bold shadow-lg hover:scale-105 transition">
-            Open Dashboard
-          </button>
-
         </div>
 
         <div className="absolute right-10 top-10 text-[180px] opacity-20">
