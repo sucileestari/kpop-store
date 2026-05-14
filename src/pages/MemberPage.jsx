@@ -123,7 +123,7 @@ export default function MemberPage() {
         </div>
 
         {/* TABLE HEADER */}
-        <div className="grid grid-cols-4 px-6 sm:px-8 py-4 bg-violet-50 font-bold text-violet-700 border-b border-violet-100">
+        <div className="text-center grid grid-cols-4 px-6 sm:px-8 py-4 bg-violet-50 font-bold text-violet-700 border-b border-violet-100">
 
           <div>Nama</div>
           <div>WhatsApp</div>
